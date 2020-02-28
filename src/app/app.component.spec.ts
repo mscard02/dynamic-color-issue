@@ -1,6 +1,7 @@
 import { TestBed, async } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
 import { AppComponent } from './app.component';
+import { MATERIAL_CSS_VARS_CFG } from 'angular-material-css-vars/mat-css-config-token.const';
 
 describe('AppComponent', () => {
   beforeEach(async(() => {
@@ -11,7 +12,16 @@ describe('AppComponent', () => {
       declarations: [
         AppComponent
       ],
-    }).compileComponents();
+      providers: [{
+        provide: MATERIAL_CSS_VARS_CFG, useValues: {
+          isAutoContrast: true,
+          isAlternativeColorAlgorithm: false,
+          darkThemeClass: 'isDarkTheme',
+          lightThemeClass: 'isLightTheme',
+        }
+      }]
+    })
+    .compileComponents();
   }));
 
   it('should create the app', () => {
